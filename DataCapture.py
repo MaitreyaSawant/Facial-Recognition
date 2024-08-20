@@ -1,20 +1,20 @@
 import os
 import cv2 as cv
 
-# Initialize webcam
+
 cap = cv.VideoCapture(0)
 
-# Check if the webcam is opened correctly
+
 if not cap.isOpened():
     print("Error: Could not open video stream")
     exit()
 
-# Load Haar cascade for face detection
+
 facedetect = cv.CascadeClassifier(cv.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 count = 0
 
-# Get user input for the ID
+
 ID = input("Enter your Name: ").lower()
 path = 'data/' + ID
 Exists = os.path.exists(path)
@@ -31,7 +31,7 @@ while True:
         print("Failed to capture image")
         break
 
-    # Convert frame to grayscale for face detection
+    
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     faces = facedetect.detectMultiScale(gray, 1.3, 5)
 
@@ -45,7 +45,7 @@ while True:
     cv.imshow('Video', frame)
     k = cv.waitKey(1)
 
-    if k == ord('q') or count > 500:  # Break if 'q' is pressed or if count exceeds 500
+    if k == ord('q') or count > 500:
         break
 
 # Release resources
