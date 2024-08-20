@@ -48,6 +48,6 @@ while True:
     if k == ord('q') or count > 500:
         break
 
-# Release resources
+
 cap.release()
 cv.destroyAllWindows()
